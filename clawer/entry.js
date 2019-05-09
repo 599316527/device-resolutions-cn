@@ -8,7 +8,7 @@ setTimeout(main, 1000)
 
 async function main() {
 
-    for (let pageNo = 1; pageNo < 3; pageNo++) {
+    for (let pageNo = 1; pageNo < 100; pageNo++) {
         let page = await browser.getNewPage()
 
         console.log(`PageNo: ${pageNo}`)
@@ -31,6 +31,7 @@ async function main() {
             return Array.from(document.querySelectorAll('#plist ul.gl-warp li.gl-item div.p-img a')).map(item => item.href)
         })
         let ids = urls.map(pageURL => getJdID(pageURL)).filter(id => /^\d+$/.test(id))
+        // filter existed devices
         let matcheds = await Promise.all(ids.map(async function (jdid) {
             let result = await Device.findOne({where: {jdid}})
             return !!result

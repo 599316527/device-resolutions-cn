@@ -4,12 +4,14 @@
   "description": "",
   "main": "browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "claw": "node clawer/entry.js",
+    "export": "node clawer/export.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "delay": "^4.2.0",
+    "fs-extra": "^7.0.1",
     "generic-pool": "^3.7.1",
     "puppeteer": "^1.15.0",
     "sequelize": "^5.8.5",

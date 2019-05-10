@@ -35,6 +35,11 @@ h1 {
 .keyword input {
 	width: 100%;
 }
+.thead {
+	position: sticky;
+    top: 0;
+	background: #fff;
+}
 </style>
 
 <h1>Device Resolutions CN</h1>
@@ -49,14 +54,14 @@ h1 {
 		<input type="search" placeholder="搜索" bind:value={keyword} >
 	</div>
 	<div class="devices">
-		<div class="device">
+		<div class="device thead">
 			<div class="brand">品牌</div>
 			<div class="name">产品</div>
 			<div class="resolution">分辨率</div>
 			<div class="jump"></div>
 		</div>
         {#each devices as device (device.jdid)}
-			{#if (!keyword || (device.brand.includes(keyword) || device.name.includes(keyword)))}
+			{#if (!keyword || (device.brand.toLowerCase().includes(keyword.toLowerCase()) || device.name.toLowerCase().includes(keyword.toLowerCase())))}
 			<div class="device">
 				<div class="brand">{device.brand}</div>
 				<div class="name">{device.name}</div>

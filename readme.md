@@ -3,3 +3,5 @@
 
 国外的手机分辨率列表都是些三棒子、LG之类的机型，缺少国产机的数据。狗东上的手机数据还可以，就爬一下搞个列表咯
 
+[Visit](https://599316527.github.io/device-resolutions-cn/)
+

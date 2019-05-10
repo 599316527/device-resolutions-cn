@@ -15,8 +15,8 @@ async function main() {
         let matched = brand.match(pattern)
         let brands = [brand.trim()]
         if (matched) {
-            brands.push(matched[1].trim())
             brands.push(brand.split('（')[0].trim())
+            brands.push(matched[1].trim())
         }
         name = brands.reduce(function (ret, brand) {
             return ret.trim().replace(new RegExp(brand, 'ig'), '')
@@ -36,6 +36,10 @@ async function main() {
         }
         name = name.substring(0, index).trim()
 
+        if (/^\d+$/.test(name)) {
+            name = (brands[1] || brands[0]) + name
+        }
+
         return {jdid, brand, name, resolution}
     }).sort(function (a, b) {
         return a.name.length > b.name.length
@@ -50,5 +54,5 @@ async function main() {
 
     devices = Object.values(deviceNameIndexMap).map(i => devices[i])
 
-    await fse.writeJSON(path.resolve(__dirname, '../devices.json'), devices)
+    await fse.writeJSON(path.resolve(__dirname, '../www/public/devices.json'), devices)
 }
